@@ -1,7 +1,7 @@
 # U2.W4: Separate Numbers with Commas
 
 
-# I worked on this challenge [by myself, with: ].
+# I worked on this challenge by myself.
 
 # 2. Pseudocode
 
