@@ -73,7 +73,7 @@ end
 
 def essay_writer(title, topic, date, thesis_statement, pronoun)
   person = Person.new(topic, pronoun)
-  "#{title}\n\n#{topic} was an important person during #{date}. #{person.heshe.capitalize} did a lot. I want to learn more about #{person.himher}. #{thesis_statement} #{person.lastName}'s contributions were important."
+  "#{title}\n\n#{topic} was an important person during #{date}. #{person.heshe.capitalize} did a lot. I want to learn more about #{person.himher}. #{thesis_statement} #{person.lastName}'s contributions were important.\n\n"
 end
 
 
