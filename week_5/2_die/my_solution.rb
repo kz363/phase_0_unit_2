@@ -68,4 +68,6 @@ p output.sort == possible_values.sort
 # 5. Reflection 
 # This challenge was very similar to the last challenge so I don't have much to say as my thoughts 
 # are similar to my last reflection. I'm learning a lot from reading the rspec tests, however. I didn't 
-# know you could pass a block after Array.new() or to_a.
+# know you could pass a block after Array.new() or to_a. I'm also interested in how it's like to come 
+# up with driver code where the output is random like this. I had trouble with that in my accountability 
+# group creator challenge last week, so I find this helpful to look at.
