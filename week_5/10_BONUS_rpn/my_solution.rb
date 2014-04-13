@@ -46,11 +46,7 @@ class RPNCalculator
     until rpn_array.length == 1 # Keeps looping until it evaluates everything in the expression.
       rpn_array.each_with_index do |i, index|
         if rpn_array[index+2] =~ /[-+*]/ # Looks 2 elements ahead for an operator
-<<<<<<< HEAD
           rpn_array[index..index+2] = rpn_array[index..index+1].inject(rpn_array[index+2])
-=======
-          rpn_array[index..index+2] = rpn_array[index..index+1].inject(:"#{rpn_array[index+2]}")
->>>>>>> 95deb04590ecf045fcc6abdd5399c99ed134c810
           break
         end
       end
