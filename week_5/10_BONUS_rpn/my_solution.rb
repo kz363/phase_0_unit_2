@@ -15,34 +15,46 @@
 
 # 3. Initial Solution
 
-class RPNCalculator
-  def evaluate(rpn_expression)
-    rpn_array = rpn_expression.split(" ").map!{|i| i =~ /\d/ ? i.to_i : i} # Converts the string to an array where each element is either an integer or a string with an operator
-    until rpn_array.length == 1 # Keeps looping until it evaluates everything in the expression.
-      temp_array = []
-      found_operator = false
-      rpn_array.each_with_index do |i, index|
-        if rpn_array[index+2] =~ /[-+*]/ && !found_operator # Looks 2 elements ahead for an operator
-          temp_array << rpn_array[index..index+1].inject(:"#{rpn_array[index+2]}")
-          rpn_array[index..index+1] = []
-          found_operator = true
-        else
-          temp_array << i
-        end
-      end
-      rpn_array = temp_array
-    end
-    rpn_array[0] # By the end of the until loop, rpn_array should only have the answer as an element.
-  end
-end
+# class RPNCalculator
+#   def evaluate(rpn_expression)
+#     rpn_array = rpn_expression.split(" ").map!{|i| i =~ /\d/ ? i.to_i : i} # Converts the string to an array where each element is either an integer or a string with an operator
+#     until rpn_array.length == 1 # Keeps looping until it evaluates everything in the expression.
+#       temp_array = []
+#       found_operator = false
+#       rpn_array.each_with_index do |i, index|
+#         if rpn_array[index+2] =~ /[-+*]/ && !found_operator # Looks 2 elements ahead for an operator
+#           temp_array << rpn_array[index..index+1].inject(:"#{rpn_array[index+2]}")
+#           rpn_array[index..index+1] = []
+#           found_operator = true
+#         else
+#           temp_array << i
+#         end
+#       end
+#       rpn_array = temp_array
+#     end
+#     rpn_array[0] # By the end of the until loop, rpn_array should only have the answer as an element.
+#   end
+# end
 
 
 # 4. Refactored Solution
-# I have no idea how to refactor this. I've realized that it's hard to refactor code with methods/syntax that 
-# I just learned because the reason I learned them to begin with was to write the best code that I could with 
-# that knowledge. It's also hard because they're really specific to the logic, so I'd have to rewrite the whole 
-# thing if I were to refactor.
 
+class RPNCalculator
+
+  def evaluate(rpn_expression)
+    rpn_array = rpn_expression.split(" ").map!{|i| i =~ /\d/ ? i.to_i : i} # Converts the string to an array where each element is either an integer or a string with an operator
+    until rpn_array.length == 1 # Keeps looping until it evaluates everything in the expression.
+      rpn_array.each_with_index do |i, index|
+        if rpn_array[index+2] =~ /[-+*]/ # Looks 2 elements ahead for an operator
+          rpn_array[index..index+2] = rpn_array[index..index+1].inject(:"#{rpn_array[index+2]}")
+          break
+        end
+      end
+    end
+    rpn_array[0]
+  end
+
+end
 
 # 1. DRIVER TESTS GO BELOW THIS LINE
 rpn = RPNCalculator.new
@@ -60,7 +72,7 @@ a, b, c = Array.new(3) { rand(100) }
 p rpn.evaluate("#{a} #{b} - #{c} *") == (a-b)*c
 
 # 5. Reflection 
-# Holy moley, I'm writing this just as I finished the initial solution, and it was quite a challenge. I wasn't sure
+# I'm writing this just as I finished the initial solution, and it was quite a challenge to write out. I wasn't sure
 # how to write the actual logic when coming up with my pseudocode, which is why it turned out so vague. I ended up not 
 # adhering to it in the end, but followed the same logic. I thought of the logic in my head to solve this problem, but 
 # the hardest part of the challenge was actually translating that logic into code. Because there's so much Ruby that I 
