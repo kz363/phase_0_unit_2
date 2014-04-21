@@ -79,42 +79,43 @@
 # 4. Refactored Solution
 
 class Car
-    attr_accessor :speed, :distance, :pizzas
+  attr_accessor :speed, :distance, :pizzas
     
-   def initialize(model, color)
-       @model = model
-       @color = color
-       @distance = 0
-       @speed = 0
-       @last_action = ""
-       @pizzas = []
-   end
+  def initialize(model, color)
+    @model = model
+    @color = color
+    @distance = 0
+    @speed = 0
+    @last_action = ""
+    @pizzas = []
+  end
    
-   def drive(mileage)
-       @distance += mileage
-       puts @last_action = "Driving #{mileage} miles at #{speed} mph."
-   end
+  def drive(mileage)
+    @distance += mileage
+    puts @last_action = "Driving #{mileage} miles at #{speed} mph."
+  end
    
-   def turn(direction)
-      puts @last_action = "Turning #{direction}."
-   end
+  def turn(direction)
+    puts @last_action = "Turning #{direction}."
+  end
    
-   def stop
-      @speed = 0
-      puts @last_action = "Stopped."
-   end
+  def stop
+    @speed = 0
+    puts @last_action = "Stopped."
+  end
    
-   def deliver_pizza
-       puts @last_action = "Delivered #{@pizzas.shift.topping} pizza."
-   end
+  def deliver_pizza
+    puts @last_action = "Delivered #{@pizzas.shift.topping} pizza."
+  end
    
 end
 
 class Pizza
-    attr_reader :topping
-    def initialize(topping)
-        @topping = topping
-    end
+  attr_reader :topping
+
+  def initialize(topping)
+    @topping = topping
+  end
 end
 
 
